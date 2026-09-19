@@ -1,12 +1,105 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="110" fill="#1458d8"/>
-<circle cx="256" cy="256" r="175" fill="#ffffff"/>
-<path d="M120 285h272v105H120z" fill="#35b9ff"/>
-<path d="M256 100l75 55-75 55-75-55z" fill="#f7c948"/>
-<text x="256" y="365"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="105"
-      font-weight="bold"
-      fill="#1458d8">EF</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1458d8"/>
+      <stop offset="1" stop-color="#27b9f2"/>
+    </linearGradient>
+
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd95a"/>
+      <stop offset="1" stop-color="#f2ad24"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Rayos decorativos -->
+  <path d="M88 157l38 18-30 28z" fill="#ffd95a"/>
+  <path d="M424 157l-38 18 30 28z" fill="#ffd95a"/>
+  <path d="M256 69l18 43h-36z" fill="#ffd95a"/>
+  <path d="M256 471l18-43h-36z" fill="#ffd95a"/>
+
+  <!-- Círculo central -->
+  <circle cx="256" cy="270" r="174" fill="#ffffff"/>
+
+  <!-- Libro abierto -->
+  <path
+    d="M112 282c48-25 91-25 144 8v105c-53-33-96-33-144-8z"
+    fill="#27b9f2"/>
+
+  <path
+    d="M400 282c-48-25-91-25-144 8v105c53-33 96-33 144-8z"
+    fill="#168fe0"/>
+
+  <!-- Centro del libro -->
+  <path
+    d="M256 290v105"
+    stroke="#ffffff"
+    stroke-width="8"
+    stroke-linecap="round"/>
+
+  <!-- Líneas del libro -->
+  <path
+    d="M138 305c32-12 61-10 94 7"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="7"
+    stroke-linecap="round"/>
+
+  <path
+    d="M374 305c-32-12-61-10-94 7"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="7"
+    stroke-linecap="round"/>
+
+  <!-- Birrete de graduación -->
+  <path
+    d="M256 112l105 61-105 61-105-61z"
+    fill="url(#gold)"/>
+
+  <!-- Parte inferior del birrete -->
+  <path
+    d="M188 208v39c39 29 97 29 136 0v-39l-68 39z"
+    fill="#f2ad24"/>
+
+  <!-- Borla -->
+  <path
+    d="M361 173v62"
+    stroke="#ffffff"
+    stroke-width="9"
+    stroke-linecap="round"/>
+
+  <circle
+    cx="361"
+    cy="242"
+    r="11"
+    fill="#ffd95a"/>
+
+  <!-- Burbuja de diálogo estilo Reino Unido -->
+  <path
+    d="M305 116h93c19 0 34 15 34 34v45c0 19-15 34-34 34h-35l-24 27 5-27h-39c-19 0-34-15-34-34v-45c0-19 15-34 34-34z"
+    fill="#ffffff"/>
+
+  <!-- Cruz roja -->
+  <path
+    d="M276 143h133M276 202h133M343 116v113"
+    stroke="#e33b45"
+    stroke-width="13"/>
+
+  <!-- Azul de la bandera -->
+  <path
+    d="M263 129l61 43-61 43z"
+    fill="#1b4aa0"
+    opacity=".95"/>
+
+  <path
+    d="M416 129l-61 43 61 43z"
+    fill="#1b4aa0"
+    opacity=".95"/>
+
+  <!-- Detalles -->
+  <circle cx="307" cy="171" r="9" fill="#ffffff"/>
+  <circle cx="389" cy="171" r="9" fill="#ffffff"/>
 </svg>
