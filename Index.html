@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1458d8">
+<link rel="manifest" href="manifest.webmanifest">
+<title>English Fácil</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,sans-serif;
+  background:#eef6ff;
+  color:#102a43
+}
+header{
+  background:#1458d8;
+  color:white;
+  padding:30px 18px;
+  text-align:center
+}
+.logo{font-size:60px}
+h1{margin:8px 0;font-size:34px}
+main{max-width:850px;margin:auto;padding:18px}
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:14px 0;
+  box-shadow:0 8px 25px #0001
+}
+button{
+  background:#1458d8;
+  color:white;
+  border:0;
+  border-radius:12px;
+  padding:13px 18px;
+  margin:5px;
+  font-weight:700;
+  cursor:pointer
+}
+button:hover{opacity:.9}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px
+}
+.word{
+  font-size:36px;
+  font-weight:800
+}
+.result{
+  font-weight:700;
+  margin-top:15px
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">📘🇬🇧</div>
+  <h1>English Fácil</h1>
+  <p>Aprende · Practica · Habla</p>
+</header>
+
+<main>
+
+<section class="card">
+<h2>🎓 Elige tu nivel</h2>
+
+<div class="grid">
+<button onclick="level(1)">Nivel 1</button>
+<button onclick="level(2)">Nivel 2</button>
+<button onclick="level(3)">Nivel 3</button>
+</div>
+</section>
+
+<section class="card">
+
+<h2 id="title">Nivel 1 · Clase 1</h2>
+
+<div id="word" class="word">Hello!</div>
+
+<p id="translation">Hola</p>
+
+<button onclick="speak()">🔊 Escuchar</button>
+<button onclick="practice()">📝 Practicar</button>
+
+<p id="result" class="result"></p>
+
+</section>
+
+<section class="card">
+
+<h2>🗣️ Conversación</h2>
+
+<p><b>A:</b> Hello! How are you?</p>
+<p><b>B:</b> I'm fine, thank you.</p>
+
+<button onclick="say('Hello! How are you? I am fine, thank you.')">
+🔊 Escuchar diálogo
+</button>
+
+</section>
+
+<section class="card">
+
+<h2>🏆 Mi progreso</h2>
+
+<p>⭐ XP: <b id="xp">0</b></p>
+<p>🔥 Racha: <b>1 día</b></p>
+
+</section>
+
+</main>
+
+<script>
+
+let xp=0;
+let current="Hello!";
+
+const lessons={
+1:["Hello!","Hola"],
+2:["Nice to meet you!","¡Encantado de conocerte!"],
+3:["How have you been?","¿Cómo has estado?"]
+};
+
+function say(text){
+
+  if(!("speechSynthesis" in window)){
+    alert("Tu dispositivo no permite reproducción de voz.");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const voice=new SpeechSynthesisUtterance(text);
+  voice.lang="en-US";
+  voice.rate=.82;
+
+  speechSynthesis.speak(voice);
+}
+
+function speak(){
+  say(current);
+}
+
+function level(n){
+
+  current=lessons[n][0];
+
+  document.getElementById("title").textContent=
+    "Nivel "+n+" · Clase 1";
+
+  document.getElementById("word").textContent=
+    lessons[n][0];
+
+  document.getElementById("translation").textContent=
+    lessons[n][1];
+
+  document.getElementById("result").textContent="";
+}
+
+function practice(){
+
+  const answer=prompt(
+    '¿Qué significa "'+current+'"?'
+  );
+
+  if(!answer) return;
+
+  const correct=lessons[1][1].toLowerCase();
+
+  if(
+    current==="Hello!" &&
+    answer.toLowerCase().includes("hola")
+  ){
+
+    xp+=10;
+
+    document.getElementById("xp").textContent=xp;
+
+    document.getElementById("result").textContent=
+      "✅ ¡Muy bien! +10 XP";
+
+  }else if(
+    current!=="Hello!" &&
+    answer.length>2
+  ){
+
+    xp+=10;
+
+    document.getElementById("xp").textContent=xp;
+
+    document.getElementById("result").textContent=
+      "✅ ¡Muy bien! +10 XP";
+
+  }else{
+
+    document.getElementById("result").textContent=
+      "❌ Intenta otra vez.";
+
+  }
+}
+
+</script>
+
+</body>
+</html>
